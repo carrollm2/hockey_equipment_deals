@@ -1,8 +1,8 @@
-require_relative 'hockey_deal.rb'
+require_relative 'hockey_equipment_deals.rb'
 
-class HockeyDeal::Clearance
+class HockeyEquipmentDeals::Clearance
 
-  include HockeyDeal::InstanceMethods
+  include HockeyEquipmentDeals::InstanceMethods
 
   attr_accessor :name, :clearance_price, :description_link, :store
 
@@ -19,7 +19,7 @@ class HockeyDeal::Clearance
 
   def self.create_from_collection(hockey_deal_array)
     hockey_deal_array.each_with_index do |hockey_deal, index|
-      new_hockey_deal = HockeyDeal::Clearance.new(hockey_deal_array[index])
+      new_hockey_deal = HockeyEquipmentDeals::Clearance.new(hockey_deal_array[index])
     end
   end  
 
