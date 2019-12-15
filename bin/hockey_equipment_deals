@@ -1,3 +1,72 @@
 #!/usr/bin/env ruby
 
-puts 'hello'
+require_relative '../lib/command_line_interface.rb'
+
+new_top_seller_deal = CommandLineInterface.new
+new_top_seller_deal.make_top_seller_hockey_deal
+
+new_clearance_deal = CommandLineInterface.new
+new_clearance_deal.make_clearance_hockey_deal
+
+
+## While Loop? exit upon not selection 1 or 2
+puts "Which type of deal are you searching for?"
+puts "Choose (1) for top seller or (2) for clearance or (3) to exit."
+type_deal_response = gets.to_i
+
+while type_deal_response != 3
+
+  if type_deal_response == 1
+      #Top Sellers
+      #Clearance
+
+    puts "Please see the Top Sellers below."
+    puts
+
+    # new_top_seller_deal = CommandLineInterface.new
+    # #Here is the problem -- each time we decide to continue items added to array
+    # new_top_seller_deal.make_top_seller_hockey_deal
+    new_top_seller_deal.display_top_seller_hockey_deal
+
+    puts
+    puts "Which top seller would you like to select?"
+
+    new_top_seller_deal.print_selected_top_seller_hockey_deal(gets.to_i)
+
+    puts
+    puts "Would you like to go back to main menu (y/n)"
+    if gets.strip.to_s.upcase == "Y"
+      type_deal_response = 1
+    else
+      type_deal_response = 3
+    end
+
+  elsif type_deal_response == 2
+    puts "Please see the Clearance items below."
+    puts
+
+    new_clearance_deal.display_clearance_hockey_deal
+
+    puts
+    puts "Which clearance item would you like to select?"
+
+    new_clearance_deal.print_selected_clearance_hockey_deal(gets.to_i)
+
+    puts
+    puts "Would you like to go back to main menu (y/n)"
+    if gets.strip.to_s.upcase == "Y"
+      type_deal_response = 1
+    else
+      type_deal_response = 3
+    end    
+
+  else
+    puts "Selection not found"
+    puts "Choose (1) for top seller or (2) for clearance or (3) to exit."
+    type_deal_response = gets.to_i
+    
+  end
+
+end
+
+puts "Goodbye now!"
