@@ -46,3 +46,5 @@ class Scraper
     end
     clearance_sale_info
    end 
+   
+end
