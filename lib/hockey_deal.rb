@@ -1,3 +1,5 @@
+require 'pry'
+
 module HockeyDeal
 
   module InstanceMethods
