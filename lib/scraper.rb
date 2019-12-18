@@ -4,8 +4,7 @@ require 'open-uri'
 class Scraper
 
   def self.scrape_top_seller(index_url)
-     # should I make these Class Constants? -- No, because don't want all instances of Class type Scraper to have/use same html
-     
+
     html = open(index_url)
     doc = Nokogiri::HTML(html)
 
@@ -26,7 +25,6 @@ class Scraper
    end 
 
   def self.scrape_clearance(index_url)
-     # should I make these Class Constants? -- No, because don't want all instances of Class type Scraper to have/use same html
 
     html = open(index_url)
     doc = Nokogiri::HTML(html)
