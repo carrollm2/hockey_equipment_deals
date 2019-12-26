@@ -1,5 +1,4 @@
-require 'nokogiri'
-require 'open-uri'
+require_relative 'hockey_equipment_deals/environment'
 
 class Scraper
 
