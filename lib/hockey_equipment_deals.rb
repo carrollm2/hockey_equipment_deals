@@ -1,5 +1,6 @@
-require_relative "hockey_equipment_deals/version"
-require 'pry'
+require_relative 'hockey_equipment_deals/version'
+require_relative 'hockey_equipment_deals/environment'
+
 
 module HockeyEquipmentDeals
   class Error < StandardError; end
