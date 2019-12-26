@@ -21,8 +21,7 @@ class Menu
   end
 
   def ask_user_to_go_back_to_main_menu
-    puts
-    puts "Would you like to go back to main menu (y/n)"
+    puts "\nWould you like to go back to main menu (y/n)"
   end
 
 
@@ -31,23 +30,19 @@ class Menu
   end
 
   def display_top_seller_message
-    puts "Please see the Top Sellers below."
-    puts
+    puts "Please see the Top Sellers below.\n"
   end
 
   def ask_which_top_seller_to_select
-    puts
-    puts "Which top seller would you like to select?"
+    puts "\nWhich top seller would you like to select?"
   end  
 
    def display_clearance_message
-    puts "Please see the Clearance items below."
-    puts
+    puts "Please see the Clearance items below.\n"
   end
 
   def ask_which_clearance_item_to_select
-    puts
-    puts "Which clearance item would you like to select?"
+    puts "\nWhich clearance item would you like to select?"
   end  
   
 end
