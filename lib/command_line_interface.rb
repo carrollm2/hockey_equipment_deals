@@ -1,8 +1,4 @@
-require_relative 'scraper.rb'
-require_relative 'top_seller.rb'
-require_relative 'clearance.rb'
-require_relative 'menu.rb'
-require 'nokogiri'
+require_relative 'hockey_equipment_deals/environment'
 
 class CommandLineInterface
   BASE_PATH = "https://www.icewarehouse.com/"
