@@ -1,4 +1,4 @@
-require_relative 'hockey_equipment_deals.rb'
+require_relative 'hockey_equipment_deals/environment'
 
 class HockeyEquipmentDeals::TopSeller
 
