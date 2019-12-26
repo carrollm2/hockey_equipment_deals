@@ -146,8 +146,7 @@ class CommandLineInterface
     HockeyEquipmentDeals::TopSeller.all.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.sales_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}"
-      puts "\n\n"
+      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
 
@@ -163,8 +162,7 @@ class CommandLineInterface
     under_75.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.sales_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}"
-      puts "\n\n"
+      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
 
@@ -178,8 +176,7 @@ class CommandLineInterface
     HockeyEquipmentDeals::Clearance.all.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.clearance_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}"
-      puts "\n\n"      
+      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
 
@@ -195,8 +192,7 @@ class CommandLineInterface
     under_75.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.clearance_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}"
-      puts "\n\n"
+      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
 
