@@ -1,8 +1,4 @@
-require_relative 'scraper.rb'
-require_relative 'top_seller.rb'
-require_relative 'clearance.rb'
-require 'nokogiri'
-
+require_relative 'hockey_equipment_deals/environment'
 
 class Menu
 
