@@ -1,5 +1,5 @@
 require_relative 'hockey_equipment_deals/version'
-require_relative 'hockey_equipment_deals/environment'
+require_relative '../config/environment'
 
 
 module HockeyEquipmentDeals
