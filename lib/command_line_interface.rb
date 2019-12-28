@@ -1,4 +1,4 @@
-require_relative 'hockey_equipment_deals/environment'
+require_relative '../config/environment'
 
 class CommandLineInterface
   BASE_PATH = "https://www.icewarehouse.com/"
