@@ -29,7 +29,7 @@ class HockeyEquipmentDeals::TopSeller
   end  
 
   def print_message
-    puts "This #{@name} is a top seller available to you at $#{@sales_price}. Check here, #{self.description_link} for more details"
+    puts "This #{@name} is a top seller available to you at $#{@sales_price}. Check here, #{@description_link} for more details"
   end
 
 
