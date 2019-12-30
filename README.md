@@ -1,6 +1,6 @@
 # HockeyEquipmentDeals
 
-Search for all the greatest hockey equipment deals.
+Want to know where you can find great hockey equipment deals? This application will provide you information on the latest top seller and clearance items available.
 
 ## Installation
 
@@ -20,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+On the command line, run "./bin/run". This command will start running the application.
+
+The above command will bring you to a menu where you can select which type of hockey equipment deal you are searching.
+
+In order to make a selection, simply type the number of the corresponding menu item and press Enter.
+
+After making the selection in the main menu, the application will provide you a list of items that you can choose from.
+
+To learn more about a specific item, type the number of the corresponding item and press enter.
 
 ## Development
 
