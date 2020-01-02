@@ -22,19 +22,19 @@ class CommandLineInterface
 
       if deal_option_chosen == 1
 
-        run_top_seller_menu(site_menu)
+        run_top_seller_menu(site_menu, 'top sellers')
       
       elsif deal_option_chosen == 2
 
-        run_top_seller_menu_under_75(site_menu)
+        run_top_seller_menu(site_menu, 'top sellers under $75')
 
       elsif deal_option_chosen == 3
 
-        run_clearance_menu(site_menu)     
+        run_clearance_menu(site_menu, 'clearance')     
 
       elsif deal_option_chosen == 4
 
-        run_clearance_menu_under_75(site_menu)    
+        run_clearance_menu(site_menu, 'clearance under $75')    
 
       elsif deal_option_chosen == 5
 
@@ -55,61 +55,48 @@ class CommandLineInterface
   end
 
 
-  def run_top_seller_menu(menu)
+  def run_top_seller_menu(menu, selection_criteria)
 
     menu.display_top_seller_message
 
-    self.display_top_seller_hockey_deal
+    display_top_seller_hockey_deal(selection_criteria)
 
     menu.ask_which_top_seller_to_select
 
     selected_top_seller = menu.get_response
 
-    self.print_selected_hockey_deal(selected_top_seller, 'top sellers')
+    print_selected_hockey_deal(selected_top_seller, selection_criteria)
 
   end
 
-  def run_top_seller_menu_under_75(menu)
 
-    menu.display_top_seller_message
-
-    self.display_top_seller_hockey_deal_under_75
-
-    menu.ask_which_top_seller_to_select
-
-    selected_top_seller = menu.get_response
-
-    self.print_selected_hockey_deal(selected_top_seller, 'top seller under $75')
-
-  end
-
-  def run_clearance_menu(menu)
+  def run_clearance_menu(menu, selection_criteria)
 
     menu.display_clearance_message
 
-    self.display_clearance_hockey_deal
+    display_clearance_hockey_deal(selection_criteria)
 
     menu.ask_which_clearance_item_to_select
 
     selected_clearance_item = menu.get_response
 
-    self.print_selected_hockey_deal(selected_clearance_item, 'clearance')
+    print_selected_hockey_deal(selected_clearance_item, selection_criteria)
 
   end
 
-  def run_clearance_menu_under_75(menu)
+  # def run_clearance_menu_under_75(menu)
 
-    menu.display_clearance_message
+  #   menu.display_clearance_message
 
-    self.display_clearance_hockey_deal_under_75
+  #   self.display_clearance_hockey_deal_under_75
 
-    menu.ask_which_clearance_item_to_select
+  #   menu.ask_which_clearance_item_to_select
 
-    selected_clearance_item = menu.get_response
+  #   selected_clearance_item = menu.get_response
 
-    self.print_selected_hockey_deal(selected_clearance_item, 'clearance under $75')
+  #   self.print_selected_hockey_deal(selected_clearance_item, 'clearance under $75')
 
-  end
+  # end
   
 
   def make_top_seller_hockey_deal
@@ -125,82 +112,67 @@ class CommandLineInterface
   def get_deal_option_chosen(chosen_description)
 
     if chosen_description == 'top sellers'
-      chosen_description_items = get_top_seller_hockey_deal
-    elsif chosen_description == 'top seller under $75'
-      chosen_description_items = get_top_seller_hockey_deal_under_75
+      chosen_description_items = HockeyEquipmentDeals::TopSeller.get_top_seller_hockey_deal('top sellers')
+    elsif chosen_description == 'top sellers under $75'
+      chosen_description_items = HockeyEquipmentDeals::TopSeller.get_top_seller_hockey_deal('top sellers under $75')
     elsif chosen_description == 'clearance'
-      chosen_description_items = get_clearance_hockey_deal
+      chosen_description_items = HockeyEquipmentDeals::Clearance.get_clearance_hockey_deal('clearance')
     elsif chosen_description == 'clearance under $75'
-      chosen_description_items = get_clearance_hockey_deal_under_75
+      chosen_description_items = HockeyEquipmentDeals::Clearance.get_clearance_hockey_deal('clearance under $75')
     end
     chosen_description_items
   end
 
 
 
-  def display_top_seller_hockey_deal
-    HockeyEquipmentDeals::TopSeller.all.each_with_index do |equipment, index|
+  def display_top_seller_hockey_deal(selection_criteria)
+    
+    if selection_criteria == 'top sellers'
+      equipment_array = HockeyEquipmentDeals::TopSeller.get_top_seller_hockey_deal('top sellers')
+    elsif selection_criteria == 'top sellers under $75'
+      equipment_array = HockeyEquipmentDeals::TopSeller.get_top_seller_hockey_deal('top sellers under $75')
+    end
+    
+    equipment_array.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.sales_price}"
       puts "\tdescription link:" + " #{equipment.description_link}\n\n"
-    end
-  end
+    end      
 
-  def get_top_seller_hockey_deal
-    all_top_sellers = HockeyEquipmentDeals::TopSeller.all
-    all_top_sellers
   end
 
 
-  def display_top_seller_hockey_deal_under_75
-    under_75 = HockeyEquipmentDeals::TopSeller.all.select {|equipment| equipment.sales_price.gsub("$","").strip.to_i < 75.00}
-
-    under_75.each_with_index do |equipment, index|
-      puts "#{index + 1}\t#{equipment.name.upcase}"
-      puts "\tprice:" + " #{equipment.sales_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
-    end
-  end
-
-  def get_top_seller_hockey_deal_under_75
-    under_75 = HockeyEquipmentDeals::TopSeller.all.select {|equipment| equipment.sales_price.gsub("$","").strip.to_i < 75.00}
-    under_75
-  end
-
-
-  def display_clearance_hockey_deal
-    HockeyEquipmentDeals::Clearance.all.each_with_index do |equipment, index|
+  def display_clearance_hockey_deal(selection_criteria)
+    
+    if selection_criteria == 'clearance'
+      equipment_array = HockeyEquipmentDeals::Clearance.get_clearance_hockey_deal('clearance')
+    elsif selection_criteria == 'clearance under $75'
+      equipment_array = HockeyEquipmentDeals::Clearance.get_clearance_hockey_deal('clearance under $75')
+    end    
+    
+    equipment_array.each_with_index do |equipment, index|
       puts "#{index + 1}\t#{equipment.name.upcase}"
       puts "\tprice:" + " #{equipment.clearance_price}"
       puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
 
-  def get_clearance_hockey_deal
-    all_clearance = HockeyEquipmentDeals::Clearance.all
-    all_clearance
-  end
 
+  # def display_clearance_hockey_deal_under_75
+  #   under_75 = HockeyEquipmentDeals::Clearance.all.select {|equipment| equipment.clearance_price.gsub("$","").strip.to_i < 75.00}
 
-  def display_clearance_hockey_deal_under_75
-    under_75 = HockeyEquipmentDeals::Clearance.all.select {|equipment| equipment.clearance_price.gsub("$","").strip.to_i < 75.00}
+  #   under_75.each_with_index do |equipment, index|
+  #     puts "#{index + 1}\t#{equipment.name.upcase}"
+  #     puts "\tprice:" + " #{equipment.clearance_price}"
+  #     puts "\tdescription link:" + " #{equipment.description_link}\n\n"
+  #   end
+  # end
 
-    under_75.each_with_index do |equipment, index|
-      puts "#{index + 1}\t#{equipment.name.upcase}"
-      puts "\tprice:" + " #{equipment.clearance_price}"
-      puts "\tdescription link:" + " #{equipment.description_link}\n\n"
-    end
-  end
-
-  def get_clearance_hockey_deal_under_75
-    under_75 = HockeyEquipmentDeals::Clearance.all.select {|equipment| equipment.clearance_price.gsub("$","").strip.to_i < 75.00}
-    under_75
-  end
 
   def print_selected_hockey_deal(selected_item, chosen_description)
 
     chosen_description_items = get_deal_option_chosen(chosen_description)
-
+    
     if selected_item.to_i > chosen_description_items.length
       puts "There is no item #{selected_item.to_i} available in menu above."
     else
