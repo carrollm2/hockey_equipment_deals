@@ -27,6 +27,14 @@ class HockeyEquipmentDeals::Clearance
   def self.all
     @@all
   end  
+  
+  def self.get_clearance_hockey_deal(selection_criteria)
+    if selection_criteria == 'clearance'
+      HockeyEquipmentDeals::Clearance.all
+    elsif selection_criteria == 'clearance under $75'
+      HockeyEquipmentDeals::Clearance.all.select {|equipment| equipment.clearance_price.gsub("$","").strip.to_i < 75.00}
+    end
+  end
 
   def print_message
     puts "This #{@name} is on clearance available to you at $#{@clearance_price}. Check here, #{@description_link} for more details."
