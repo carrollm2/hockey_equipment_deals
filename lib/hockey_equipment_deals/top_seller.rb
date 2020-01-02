@@ -27,6 +27,14 @@ class HockeyEquipmentDeals::TopSeller
   def self.all
     @@all
   end  
+  
+  def self.get_top_seller_hockey_deal(selection_criteria)
+    if selection_criteria == 'top sellers'
+      HockeyEquipmentDeals::TopSeller.all
+    elsif selection_criteria == 'top sellers under $75'
+      HockeyEquipmentDeals::TopSeller.all.select {|equipment| equipment.sales_price.gsub("$","").strip.to_i < 75.00}
+    end
+  end  
 
   def print_message
     puts "This #{@name} is a top seller available to you at $#{@sales_price}. Check here, #{@description_link} for more details"
