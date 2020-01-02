@@ -84,25 +84,12 @@ class CommandLineInterface
 
   end
 
-  # def run_clearance_menu_under_75(menu)
-
-  #   menu.display_clearance_message
-
-  #   self.display_clearance_hockey_deal_under_75
-
-  #   menu.ask_which_clearance_item_to_select
-
-  #   selected_clearance_item = menu.get_response
-
-  #   self.print_selected_hockey_deal(selected_clearance_item, 'clearance under $75')
-
-  # end
-  
 
   def make_top_seller_hockey_deal
     equipment_array = Scraper.scrape_top_seller(BASE_PATH)
     HockeyEquipmentDeals::TopSeller.create_from_collection(equipment_array)
   end
+
 
   def make_clearance_hockey_deal
     equipment_array = Scraper.scrape_clearance(BASE_PATH)
@@ -156,17 +143,6 @@ class CommandLineInterface
       puts "\tdescription link:" + " #{equipment.description_link}\n\n"
     end
   end
-
-
-  # def display_clearance_hockey_deal_under_75
-  #   under_75 = HockeyEquipmentDeals::Clearance.all.select {|equipment| equipment.clearance_price.gsub("$","").strip.to_i < 75.00}
-
-  #   under_75.each_with_index do |equipment, index|
-  #     puts "#{index + 1}\t#{equipment.name.upcase}"
-  #     puts "\tprice:" + " #{equipment.clearance_price}"
-  #     puts "\tdescription link:" + " #{equipment.description_link}\n\n"
-  #   end
-  # end
 
 
   def print_selected_hockey_deal(selected_item, chosen_description)
