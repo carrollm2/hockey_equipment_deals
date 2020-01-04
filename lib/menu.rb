@@ -17,7 +17,7 @@ class Menu
   end
 
   def ask_user_to_go_back_to_main_menu
-    puts "\nWould you like to go back to main menu (y/n)"
+    puts "\nWould you like to go back to main menu? (y/n)"
   end
 
 
