@@ -37,7 +37,7 @@ class HockeyEquipmentDeals::Clearance
   end
 
   def print_message
-    puts "This #{@name} is on clearance available to you at $#{@clearance_price}. Check here, #{@description_link} for more details."
+    puts "This #{@name} is on clearance available to you at #{@clearance_price}. Check here, #{@description_link}, for more details."
   end
 
 end
